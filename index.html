@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Crossword Generator</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Input Screen -->
+  <div id="input-screen" class="screen active">
+    <div class="container">
+      <header class="header">
+        <div class="header-icon">🎯</div>
+        <h1>AI Team Crossword Generator</h1>
+        <p>Transform team data into playable puzzles</p>
+      </header>
+
+      <div class="card">
+        <label for="team-input" class="label">📋 Paste Team Data (JSON Format)</label>
+        <textarea 
+          id="team-input" 
+          class="input-textarea" 
+          placeholder='{"team": [{"name": "Alice", "title": "Developer", "skills": ["Python", "Django"], "phone": "ext 101"}]}'
+        ></textarea>
+
+        <div id="error-message" class="error-box hidden"></div>
+
+        <button id="generate-btn" class="btn-primary">
+          <span id="btn-text">✨ Generate Crossword</span>
+          <span id="btn-loader" class="loader hidden"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Puzzle Screen -->
+  <div id="puzzle-screen" class="screen">
+    <div class="container-wide">
+      <div class="puzzle-header">
+        <div>
+          <h1>Team Crossword Puzzle</h1>
+          <p>Solve using your team knowledge</p>
+        </div>
+        <div class="header-actions">
+          <div class="progress-card">
+            <div class="progress-label">Progress</div>
+            <div class="progress-value" id="progress-percentage">0%</div>
+            <div class="progress-detail" id="progress-detail">0 / 0</div>
+          </div>
+          <button id="new-puzzle-btn" class="btn-secondary">New Puzzle</button>
+        </div>
+      </div>
+
+      <div class="puzzle-layout">
+        <!-- Grid Section -->
+        <div class="grid-section">
+          <div class="card">
+            <div id="crossword-grid"></div>
+          </div>
+        </div>
+
+        <!-- Clues Section -->
+        <div class="clues-section">
+          <div class="card clue-card">
+            <h2 class="clue-title">→ Across</h2>
+            <div id="across-clues" class="clue-list"></div>
+          </div>
+
+          <div class="card clue-card">
+            <h2 class="clue-title down">↓ Down</h2>
+            <div id="down-clues" class="clue-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="js/dataExtractor.js"></script>
+  <script src="js/aiClueGenerator.js"></script>
+  <script src="js/gridEngine.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
